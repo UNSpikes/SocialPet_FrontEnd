@@ -1,6 +1,6 @@
 import React from 'react';
 import {schema_1, blue_schema, registrerBox} from './registrerStyle'
-import '../registrer/style.css'
+import '../../components/registrer/style.css'
 
 export class Registrer extends React.Component{
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {LogIn} from './login/login';
-import {Registrer} from './registrer/registrer';
-import {Home} from './landing/home';
+import {LogIn} from './components/login/login';
+import {Registrer} from './components/registrer/registrer';
+import {Home} from './components/landing/home';
 import registerServiceWorker from './registerServiceWorker';
-import {BrowserRouter, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 
 ReactDOM.render(
     <BrowserRouter>

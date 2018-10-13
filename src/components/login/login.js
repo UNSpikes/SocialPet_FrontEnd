@@ -1,6 +1,6 @@
 import React from 'react';
 import {styles} from './loginStyle';
-import '../login/style.css'
+import '../../components/login/style.css'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
@@ -17,7 +17,7 @@ export class LogIn extends React.Component{
 			<div className="loginBox">
 				<a href={src}><img src={src} className="imagen"/></a>
 				<div className="formBox">
-					<h1>SocialPets</h1>
+					<Link style={{ textDecoration: 'none' }} className="option" to="/home"><h1>SocialPets</h1></Link>
 					<div className="list">
 						<label>Ingresa</label>
 						<div className="social">

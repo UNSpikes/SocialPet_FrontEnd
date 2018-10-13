@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import '../landing/style.css';
+import '../../components/landing/style.css';
 
 export class Home extends React.Component{
 
