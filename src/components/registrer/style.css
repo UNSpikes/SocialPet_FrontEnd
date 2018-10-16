@@ -42,7 +42,7 @@ h1{
 
 .form{
 	display: grid;
-	grid-template-rows: 60px 60px 60px 60px;
+	grid-template-rows: 40px 2em 40px 2em 40px 2em 40px;
 	grid-template-columns: 1fr 1fr;
 
 }
@@ -54,7 +54,6 @@ h1{
 .text{
 	width: 90%;
 	height: 40px;
-	margin-bottom: 20px;
 	margin-left: 20px;
 	margin-left: 20px;
 }
@@ -66,8 +65,28 @@ h1{
 	width: 100%;
 	text-align: left;
 }
+
+.alerta3 {
+	color: red;
+	font-size: 13px;
+	padding-left: 20px;
+	width: 100%;
+	text-align: left;
+}
+
 /*
 input[type=text]:focus {
     background-color: lightblue;
 }
 */
+
+.alerta2{
+
+	margin: 0;
+	padding: 0;
+	height: 2em;
+	text-align: left;
+	margin-left: 50px;
+	font-size: 13px;
+	color: red;
+}
