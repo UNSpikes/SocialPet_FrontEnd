@@ -1,6 +1,5 @@
 
 
-
 const fontFamily = 'Comic Sans MS, Lucida Handwriting, cursive';
 const background = 'pink url("https://media.giphy.com/media/oyr89uTOBNVbG/giphy.gif") fixed';
 const fontSize = '4em';
@@ -14,3 +13,4 @@ export const styles = {
   padding:    padding,
   color:      color
 };
+
