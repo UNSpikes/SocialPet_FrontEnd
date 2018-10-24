@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../../components/landing/style.css';
+import { NavBar } from './../navBar/navbar';
 
 export class Home extends React.Component{
 
@@ -8,15 +9,7 @@ export class Home extends React.Component{
 	render(){
 		return(
 			<div>
-				<div className="navBar">
-					
-					<h1 className="title">SocialPet</h1>
-					<Link style={{ textDecoration: 'none' }} className="option" to="/login">Log In</Link>
-					<Link style={{ textDecoration: 'none' }} className="option" to="/registrer">sig In</Link>
-					<Link style={{ textDecoration: 'none' }} className="option" to="/home" >Explore</Link>
-					<Link style={{ textDecoration: 'none' }} className="option" to="/home">More</Link>
-	
-				</div>
+				<NavBar/>
 				<div className="presentation">
 					<h1>SocialPet</h1>
 					<div className="tow">
