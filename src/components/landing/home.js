@@ -9,7 +9,7 @@ export class Home extends React.Component{
 	render(){
 		return(
 			<div>
-				<NavBar/>
+				<NavBar logOut="false"/>
 				<div className="presentation">
 					<h1>SocialPet</h1>
 					<div className="tow">
