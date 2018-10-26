@@ -5,24 +5,27 @@ import axios from 'axios';
 import '../../components/user/style.css';
 
 const mapStateToProps = state => {
-	console.log(state.tokes)
-	return {tokens: state.tokens};
+	//console.log(state.renderD.dogs);
+	return {
+		tokens: state.authentic.tokens,
+	};
 }
 
 
 class connectUser extends React.Component {
 	constructor(props){
 		super(props);
+		console.log(this.props.dogs);
 		this.state = {
 			filters: {
 				edge: "0",
 				breed: "",
 				location: "",
-			}
+			},
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.search = this.search.bind(this);
-		this.getDogs - this.getDogs.bind(this);
+		this.componentDidMount = this.componentDidMount.bind(this)
 	}
 
 	handleChange(e){
@@ -31,7 +34,7 @@ class connectUser extends React.Component {
 		this.setState({filters});
 	}
 
-	getDogs(){
+	componentDidMount(){
 		let config = {
 			headers: {
 				'Accept': '*/*',
@@ -49,14 +52,12 @@ class connectUser extends React.Component {
 						cont++;
 					}
 				};
-				return dogs;
+				this.setState({dogs:dogs})
 			}).catch(
 				function (error){console.log(error)}
 			);
 
 	}
-
-
 
 	search(e){
 		let link = 'https://socialped-back-unal.herokuapp.com/breeds/' ;
@@ -87,25 +88,14 @@ class connectUser extends React.Component {
 
 	render(){
 
-		let listDogs = this.getDogs();
 		let dogs = (<div></div>);
-
-		if(typeof(listDogs) !== "undefined" ){
-			dogs = (
-				<div className="lista-perros">
-					{listDogs.map(dog => (<div>{dog.name}</div>))}
-				</div>
-			)
-		}
-
 		if(typeof(this.state.dogs) !== "undefined" ){
 			dogs = (
 				<div className="lista-perros">
 					{this.state.dogs.map(dog => (<div>{dog.name}</div>))}
 				</div>
 			)
-		}	
-
+		}
 		return (
 			<div>
 				<NavBar logIn="false" sigIn="false"/>

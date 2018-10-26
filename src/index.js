@@ -9,8 +9,9 @@ import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import { createStore } from 'redux';
 import { Provider } from "react-redux";
 import { authenticate }  from './JS/reducers/authenticate';
+import Reducer from './JS/reducers';
 
-const store = createStore(authenticate);
+const store = createStore(Reducer);
 
 ReactDOM.render(
 	<Provider store={store} >

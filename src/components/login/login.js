@@ -4,11 +4,14 @@ import '../../components/login/style.css'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setToken } from '../../JS/actions/index';
+import { addListDogs } from '../../JS/actions/index';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 const mapDispatchToProps = dispatch => {
 	return{
-		setToken: token => dispatch(setToken(token))
+		setToken: token => dispatch(setToken(token)),
+		addListDogs: dogList => dispatch(addListDogs(dogList)) 
 	};
 };
 
@@ -66,6 +69,8 @@ class LogInForm extends React.Component{
 	}
 
 
+
+
 	render(){
 		let src = "https://www.anipedia.net/imagenes/taxonomia-perros.jpg";
 		let facebook = 'https://icon-icons.com/icons2/555/PNG/512/facebook_icon-icons.com_53612.png';
@@ -73,6 +78,8 @@ class LogInForm extends React.Component{
 		let twitter = 'https://tarotdecarmenylidia.files.wordpress.com/2016/08/twitter-icon-770x769.png';
 
 		if (this.state.redirect){
+			let list = this.getDogs()
+			this.props.addListDogs({list})
 			return (<Redirect to="/user"/>);
 		}else{
 			return (
