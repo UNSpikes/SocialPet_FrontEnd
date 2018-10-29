@@ -12,32 +12,6 @@ import GoogleLogin from 'react-google-login';
 
 import { googleID, googleSecretoCliente } from '../../JS/constants/clientGoogle';
 
- 
-const responseGoogle = (response) => {
-  	//console.log(response);
-  	let token = '';
-	let id = 1;
-	let link = serverLink + '/auth/google/token';
-	let config = {
-			headers: {
-				'Accept': '*/*',
-				'Content-Type': 'application/json'
-			}
-		}
- 	axios.post(link, { "auth": { "tokenId": response.tokenId} }, config).then(
-		res => {
-			if(res.status === 201 ){
-				token = response.tokenId;
-				this.props.setToken({token, id});
-				this.setState({redirect: true});
-				//console.log(res)
-			}else{
-				this.setState({userError: "Usuario o Contraseña incorrectos"})
-			}
-		}).catch(
-			function (error){console.log(error)}
-		)
-}
 
 
 
@@ -61,7 +35,34 @@ class LogInForm extends React.Component{
 		this.handleUser = this.handleUser.bind(this);
 		this.handlePassword = this.handlePassword.bind(this);
 		this.submitLogIn = this.submitLogIn.bind(this);
+		this.responseGoogle = this.responseGoogle.bind(this);
 	}
+	
+	responseGoogle  (response)  {
+		//console.log(response);
+		let token = '';
+	  let id = 1;
+	  let link = serverLink + '/login';
+	  let config = {
+			  headers: {
+				  'Accept': '*/*',
+				  'Content-Type': 'application/json'
+			  }
+		  }
+	   axios.post(link, { "auth": { "tokenId": response.tokenId} }, config).then(
+		  res => {
+			  if(res.status === 200 ){
+				  token = response.tokenId;
+				  this.props.setToken({token, id});
+				  this.setState({redirect: true});
+				  //console.log(res)
+			  }else{
+				  this.setState({userError: "Usuario o Contraseña incorrectos"})
+			  }
+		  }).catch(
+			  function (error){console.log(error)}
+		  )
+  }
 
 	handleUser(e){
 		this.setState({user: e.target.value});
@@ -94,7 +95,7 @@ class LogInForm extends React.Component{
 			//enviar
 			let token = '';
 			let id = 1;
-			let link = serverLink + 'user_token';
+			let link = serverLink + 'auth/sign_in/token';
 			let config = {
 					headers: {
 						'Accept': '*/*',
@@ -144,8 +145,8 @@ class LogInForm extends React.Component{
 									<GoogleLogin
 									    clientId={googleID}
 									    buttonText="Login"
-									    onSuccess={responseGoogle}
-									    onFailure={responseGoogle}
+									    onSuccess={this.responseGoogle}
+									    onFailure={this.responseGoogle}
 								  	/>
 								</a>
 								<a><img src={twitter} className="icon"/></a>
