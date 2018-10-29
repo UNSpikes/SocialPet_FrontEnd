@@ -14,7 +14,29 @@ import { googleID, googleSecretoCliente } from '../../JS/constants/clientGoogle'
 
  
 const responseGoogle = (response) => {
-  console.log(response);
+  	//console.log(response);
+  	let token = '';
+	let id = 1;
+	let link = serverLink + '/auth/google/token';
+	let config = {
+			headers: {
+				'Accept': '*/*',
+				'Content-Type': 'application/json'
+			}
+		}
+ 	axios.post(link, {"tokenId": response.tokenId}, config).then(
+		res => {
+			if(res.status === 201 ){
+				token = response.tokenId;
+				this.props.setToken({token, id});
+				this.setState({redirect: true});
+				//console.log(res)
+			}else{
+				this.setState({userError: "Usuario o Contraseña incorrectos"})
+			}
+		}).catch(
+			function (error){console.log(error)}
+		)
 }
 
 
