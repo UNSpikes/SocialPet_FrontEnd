@@ -64,7 +64,18 @@ class LogInForm extends React.Component{
 			let id = 1;
 			this.props.setToken({token, id});
 			this.setState({redirect: true});
-			
+			let link = serverLink + 'user_token';
+			let config = {
+					headers: {
+						'Accept': '*/*',
+						'Content-Type': 'application/json'
+					}
+				}
+			axios.post(link, {"auth": {"email": this.state.user, "password": this.state.password}}, config).then(
+				res => {console.log(res)}).catch(
+						function (error){console.log(error)}
+				)
+					
 
 		}
 	}
