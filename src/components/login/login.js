@@ -24,7 +24,7 @@ const responseGoogle = (response) => {
 				'Content-Type': 'application/json'
 			}
 		}
- 	axios.post(link, {"tokenId": response.tokenId}, config).then(
+ 	axios.post(link, { "auth": { "tokenId": response.tokenId} }, config).then(
 		res => {
 			if(res.status === 201 ){
 				token = response.tokenId;
