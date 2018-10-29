@@ -1,0 +1,13 @@
+.blogBox{
+	margin-left: 100px;
+	margin-right: 100px;
+	height: 500px;
+	background-color: white; 
+	padding: 10px;
+	justify-content: center;
+	font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+
+#blogTitle{
+    font-size: 5rem;
+}

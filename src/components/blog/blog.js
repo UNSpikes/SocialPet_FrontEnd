@@ -6,9 +6,13 @@ import { NavBar } from './../navBar/navbar';
 export class Blog extends React.Component {
     render() {
         return (
-            <div class="container-fluid main-container">
-                <div class="container-fluid">
-
+            <div class="blogBox">
+                <div class="container-fluid main-container">
+                    <div class="jumbotron">
+                        <h1 id="blogTitle" class="text-rigth">Blog Title</h1>
+                        <hr></hr>
+                        
+                    </div>
                 </div>
             </div>
         );

@@ -14,7 +14,7 @@ import { googleID, googleSecretoCliente } from '../../JS/constants/clientGoogle'
 
  
 const responseGoogle = (response) => {
-  console.log(response);
+  console.log(response.tokenId);
 }
 
 
