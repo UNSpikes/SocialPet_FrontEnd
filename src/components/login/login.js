@@ -7,7 +7,17 @@ import { setToken } from '../../JS/actions/index';
 import { addListDogs } from '../../JS/actions/index';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import {serverLink } from '../../JS/constants/links';
+import { serverLink } from '../../JS/constants/links';
+import GoogleLogin from 'react-google-login';
+
+import { googleID, googleSecretoCliente } from '../../JS/constants/clientGoogle';
+
+ 
+const responseGoogle = (response) => {
+  console.log(response);
+}
+
+
 
 const mapDispatchToProps = dispatch => {
 	return{
@@ -60,10 +70,8 @@ class LogInForm extends React.Component{
 		}
 		if(isValid){
 			//enviar
-			let token = 'token';
+			let token = '';
 			let id = 1;
-			this.props.setToken({token, id});
-			this.setState({redirect: true});
 			let link = serverLink + 'user_token';
 			let config = {
 					headers: {
@@ -72,7 +80,16 @@ class LogInForm extends React.Component{
 					}
 				}
 			axios.post(link, {"auth": {"email": this.state.user, "password": this.state.password}}, config).then(
-				res => {console.log(res)}).catch(
+				res => {
+					if(res.status === 201 ){
+						token = res.data.jwt;
+						this.props.setToken({token, id});
+						this.setState({redirect: true});
+						//console.log(res)
+					}else{
+						this.setState({userError: "Usuario o Contraseña incorrectos"})
+					}
+				}).catch(
 						function (error){console.log(error)}
 				)
 					
@@ -90,11 +107,7 @@ class LogInForm extends React.Component{
 		let twitter = 'https://tarotdecarmenylidia.files.wordpress.com/2016/08/twitter-icon-770x769.png';
 
 		if (this.state.redirect){
-			if(this.state.user !== "admin")
-				return (<Redirect to="/user"/>);
-			else{
-				return (<Redirect to="/admin"/>);
-			}
+			return (<Redirect to="/user"/>);
 		}else{
 			return (
 				<div className="loginBox">
@@ -105,13 +118,20 @@ class LogInForm extends React.Component{
 							<label>Ingresa</label>
 							<div className="social">
 								<a><img src={facebook} className="icon" /></a>
-								<a><img src={google} className="icon" /></a>
+								<a><img src={google} className="icon" /> 
+									<GoogleLogin
+									    clientId={googleID}
+									    buttonText="Login"
+									    onSuccess={responseGoogle}
+									    onFailure={responseGoogle}
+								  	/>
+								</a>
 								<a><img src={twitter} className="icon"/></a>
 							</div>
 							<label >o</label>
 						</div>
 						<div className="o">
-							<input className="text" type="text" placeholder="Usuario" onChange={this.handleUser}  value={this.state.user}/>
+							<input className="text" type="text" placeholder="Email" onChange={this.handleUser}  value={this.state.user}/>
 							<h5 className="alerta">{this.state.userError}</h5>
 							<input className="text" type="password" placeholder="Password" onChange={this.handlePassword} value={this.state.password}/>
 							<h5 className="alerta">{this.state.passwordError}</h5>
