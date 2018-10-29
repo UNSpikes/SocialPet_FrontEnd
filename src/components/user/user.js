@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { NavBar } from './../navBar/navbar';
 import axios from 'axios';
 import '../../components/user/style.css';
+import {serverLink } from '../../JS/constants/links';
 
 const mapStateToProps = state => {
 	//console.log(state.renderD.dogs);
@@ -21,7 +22,7 @@ class connectUser extends React.Component {
 				edge: "0",
 				breed: "",
 				location: "",
-			},
+			}
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.search = this.search.bind(this);
@@ -36,14 +37,18 @@ class connectUser extends React.Component {
 
 	componentDidMount(){
 		let config = {
-			headers: {
+			headers: {//127.0.0.1
+						//192.168.42.53
 				'Accept': '*/*',
 			}
 		}
 		axios.get(
-			'https://socialped-back-unal.herokuapp.com/breeds',
+			//'https://socialped-back-unal.herokuapp.com/breeds',
+			//'http://192.168.0.125:3000/users/1/info',
+			serverLink + '/breeds',
 			config
 			).then(res =>{
+				console.log(res.data);
 				let dogs = []
 				let i = 0, cont = 0;
 				for (i = 0; i < res.data.length; i++){
@@ -60,7 +65,7 @@ class connectUser extends React.Component {
 	}
 
 	search(e){
-		let link = 'https://socialped-back-unal.herokuapp.com/breeds/' ;
+		let link = serverLink +'breeds/' ;
 		if(this.state.filters.breed !== ''){
 			link  += 'showname/' + this.state.filters.breed;
 		}

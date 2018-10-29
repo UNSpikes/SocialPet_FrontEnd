@@ -7,6 +7,7 @@ import { setToken } from '../../JS/actions/index';
 import { addListDogs } from '../../JS/actions/index';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import {serverLink } from '../../JS/constants/links';
 
 const mapDispatchToProps = dispatch => {
 	return{
@@ -78,9 +79,11 @@ class LogInForm extends React.Component{
 		let twitter = 'https://tarotdecarmenylidia.files.wordpress.com/2016/08/twitter-icon-770x769.png';
 
 		if (this.state.redirect){
-			let list = this.getDogs()
-			this.props.addListDogs({list})
-			return (<Redirect to="/user"/>);
+			if(this.state.user !== "admin")
+				return (<Redirect to="/user"/>);
+			else{
+				return (<Redirect to="/admin"/>);
+			}
 		}else{
 			return (
 				<div className="loginBox">
