@@ -5,6 +5,7 @@ import {Registrer} from './../registrer/registrer';
 import {Home} from './../landing/home';
 import {User} from './../user/user';
 import {Admin} from './../admin/admin';
+import {Blog} from './../blog/blog';
 import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 
 
@@ -19,6 +20,7 @@ export class App extends React.Component{
                     <Route  path='/login' component={LogIn}/>
                     <Route  path='/registrer' component={Registrer}/>
                     <Route  path='/user' component={User}/>
+                    <Route  path='/blogs' component={Blog}/>
                     <Redirect from="/*" to="/home" />
                 </div>
             </BrowserRouter>
