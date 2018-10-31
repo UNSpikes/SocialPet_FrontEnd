@@ -18,7 +18,7 @@ import {Loading} from './../loading/loading';
 
 import { googleID, googleSecretoCliente } from '../../JS/constants/clientGoogle';
 
-
+import perros from '../../assets/taxonomia-perros.jpg';
 
 const mapDispatchToProps = dispatch => {
 	return{
@@ -157,7 +157,6 @@ class LogInForm extends React.Component{
 
 
 	render(){
-		let src = "https://www.anipedia.net/imagenes/taxonomia-perros.jpg";
 		let facebook = 'https://icon-icons.com/icons2/555/PNG/512/facebook_icon-icons.com_53612.png';
 		let onChangeUser = this.handleUser;
 		let onChangePassword = this.handlePassword;
@@ -178,7 +177,7 @@ class LogInForm extends React.Component{
 				<div>
 				{loadingWindow}
 				<div className="loginBox">
-					<a href={src}><img src={src} className="imagen"/>
+					<a><img src={perros} className="imagen"/>
 					</a>
 					<div className="formBox">
 						<Link style={{ textDecoration: 'none' }} className="option" to="/home"><h1>SocialPets</h1></Link>
