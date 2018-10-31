@@ -142,7 +142,9 @@ export class Registrer extends React.Component{
 				</div>
 				<div className="acept">
 					<label className={this.state.class_c} name="condiciones" ><input type="checkbox" name="condiciones" onClick={this.handleChange} value={this.state.fields.condiciones}/>I agree whit the terms and politics of privacity</label>
-					<button className="button" onClick={this.submitForm}>Create Acount</button>
+					<div className="buttonEfeccts">	
+						<button className="button" onClick={this.submitForm}>Create Acount</button>
+					</div>
 				</div>
 			</div>
 		);
