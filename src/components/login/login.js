@@ -1,11 +1,15 @@
 import React from 'react';
+
 import {styles} from './loginStyle';
 import '../../components/login/style.css'
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import { setToken } from '../../JS/actions/index';
 import { addListDogs } from '../../JS/actions/index';
-import { Redirect } from 'react-router-dom';
+
 import axios from 'axios';
 import { serverLink } from '../../JS/constants/links';
 import GoogleLogin from 'react-google-login';

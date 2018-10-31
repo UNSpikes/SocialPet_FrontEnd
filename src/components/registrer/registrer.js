@@ -2,6 +2,9 @@ import React from 'react';
 import {schema_1, blue_schema, registrerBox} from './registrerStyle'
 import '../../components/registrer/style.css';
 
+import {Loading} from './../loading/loading';
+
+
 export class Registrer extends React.Component{
 
 	constructor(props){
@@ -10,7 +13,8 @@ export class Registrer extends React.Component{
 			fields: {},
 			errors: {},
 			conditions: false,
-			class_c: "checkbox"
+			class_c: "checkbox",
+			loading: false
 		}
 		this.handleChange = this.handleChange.bind(this)
 		this.submitForm = this.submitForm.bind(this)
@@ -42,8 +46,8 @@ export class Registrer extends React.Component{
 			fields["password"] = "";
 			fields["secondPassword"] = "";
 			// mandar el post
-			//..
-			//..
+			//this.setState({loading: true});
+			//this.setState({loading: false});
 		}
 	}
 
@@ -111,10 +115,25 @@ export class Registrer extends React.Component{
 		return isValid;
 	}
 
+	nothing(){
+
+	}
 
 	render(){
+		let onClickSubmit = this.submitForm
+		let loadingWindow = (<div></div>);
+		if(this.state.loading === false){
+			onClickSubmit = this.submitForm
+			loadingWindow = (<div></div>);
+		}else{
+			onClickSubmit = this.nothing
+			loadingWindow = <Loading/>;
+		}
+
 		return(
 			<div className="registrerBox">
+				{loadingWindow}
+				<Loading/>
 				<h1>Registrate</h1>
 				<div className="form">
 					<input type="text" placeholder="First Name" className="text" name="fisrtName" value={this.state.fields.fisrtName} onChange={this.handleChange}></input>
@@ -143,7 +162,7 @@ export class Registrer extends React.Component{
 				<div className="acept">
 					<label className={this.state.class_c} name="condiciones" ><input type="checkbox" name="condiciones" onClick={this.handleChange} value={this.state.fields.condiciones}/>I agree whit the terms and politics of privacity</label>
 					<div className="buttonEfeccts">	
-						<button className="button" onClick={this.submitForm}>Create Acount</button>
+						<button className="button" onClick={onClickSubmit}>Create Acount</button>
 					</div>
 				</div>
 			</div>
