@@ -179,7 +179,7 @@ export class Registrer extends React.Component{
 			loadingWindow = <Loading/>;
 		}
 		if(this.state.redirect){
-			return(<Redirect to="/user"/>);
+			return(<Redirect to="/login"/>);
 		}
 
 		return(
