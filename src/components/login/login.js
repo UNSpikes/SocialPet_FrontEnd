@@ -116,6 +116,7 @@ class LogInForm extends React.Component{
 		}else{
 			this.setState({passwordError: ''})
 		}
+		this.setState({redirect: true});
 		if(isValid){
 			//enviar
 			let token = '';

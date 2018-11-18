@@ -1,8 +1,15 @@
 import React from 'react';
+
 import { connect } from 'react-redux';
+
 import { NavBar } from './../navBar/navbar';
+import { SubmitFile } from 		'./../submitFile/submitFile';
+import { ViewDocument } from 	'./../viewDocument/viewDocument';
+
 import axios from 'axios';
+
 import '../../components/user/style.css';
+
 import {serverLink } from '../../JS/constants/links';
 
 const mapStateToProps = state => {
@@ -104,7 +111,8 @@ class connectUser extends React.Component {
 		return (
 			<div>
 				<NavBar logIn="false" sigIn="false"/>
-				
+				<SubmitFile/>
+				<ViewDocument/>
 				<div className="inicio">
 					<div className="filtros">
 						<div className="raza">
