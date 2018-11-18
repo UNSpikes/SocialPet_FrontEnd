@@ -13,6 +13,12 @@
 	text-align: center;
 }
 
+.google{
+	background: url('../../assets/google__round_logo.png');
+	background-size: cover;
+	border: 0;
+}
+
 .loginBox h1{
 	position: relative;
 	color: #0033FF;

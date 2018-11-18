@@ -2,6 +2,14 @@ import React from 'react';
 import {schema_1, blue_schema, registrerBox} from './registrerStyle'
 import '../../components/registrer/style.css';
 
+import { Redirect } from 'react-router-dom';
+
+import axios from 'axios';
+import { serverLink } from '../../JS/constants/links';
+
+import {Loading} from './../loading/loading';
+
+
 export class Registrer extends React.Component{
 
 	constructor(props){
@@ -10,7 +18,9 @@ export class Registrer extends React.Component{
 			fields: {},
 			errors: {},
 			conditions: false,
-			class_c: "checkbox"
+			class_c: "checkbox",
+			loading: false,
+			redirect: false
 		}
 		this.handleChange = this.handleChange.bind(this)
 		this.submitForm = this.submitForm.bind(this)
@@ -26,7 +36,7 @@ export class Registrer extends React.Component{
 			fields[e.target.name] = e.target.value;
 		}
 		this.setState({fields});
-		console.log(this.state.fields);
+		//console.log(this.state.fields);
 	}
 
 
@@ -41,9 +51,52 @@ export class Registrer extends React.Component{
 			fields["address"] = "";
 			fields["password"] = "";
 			fields["secondPassword"] = "";
-			// mandar el post
-			//..
-			//..
+			fields["city"] = "";
+			let link = serverLink + 'users'
+			let config = {
+					headers: {
+						'Accept': '*/*',
+						'Content-Type': 'application/json'
+					}
+				}
+			this.setState({loading: true});
+			axios.post(
+					link,
+					{
+						
+						"name": this.state.fields.fisrtName,
+						"last_name": this.state.fields.lastName,
+						"age": this.state.fields.address,
+						"phone_number": this.state.fields.phone,
+						"additional_info": "",
+						"country": "colombia",
+						"city": this.state.fields.city,
+						"password": this.state.fields.password,
+						"email": this.state.fields.email
+						/*
+						"name": "nasdombre",
+						"last_name": "apellido",
+						"age": "45",
+						"phone_number": "1234567895",
+						"additional_info": "",
+						"country": "colombia",
+						"city": "bogota",
+						"password": "sdasdas12@as",
+						"email": "asdasd@sadasd.com"
+						*/
+					},
+					config
+				).then(res =>{
+					if(res.status !== 201){
+						console.error(res)	
+					}else{
+						this.setState({redirect: true});
+					}
+					this.setState({loading: false});
+				}).catch( error => {
+					this.setState({loading: false});
+					console.log(error);
+				});
 		}
 	}
 
@@ -111,10 +164,27 @@ export class Registrer extends React.Component{
 		return isValid;
 	}
 
+	nothing(){
+
+	}
 
 	render(){
+		let onClickSubmit = this.submitForm
+		let loadingWindow = (<div></div>);
+		if(this.state.loading === false){
+			onClickSubmit = this.submitForm
+			loadingWindow = (<div></div>);
+		}else{
+			onClickSubmit = this.nothing
+			loadingWindow = <Loading/>;
+		}
+		if(this.state.redirect){
+			return(<Redirect to="/login"/>);
+		}
+
 		return(
 			<div className="registrerBox">
+				{loadingWindow}
 				<h1>Registrate</h1>
 				<div className="form">
 					<input type="text" placeholder="First Name" className="text" name="fisrtName" value={this.state.fields.fisrtName} onChange={this.handleChange}></input>
@@ -125,8 +195,8 @@ export class Registrer extends React.Component{
 					<input type="text" placeholder="Phone" className="text" name="phone" value={this.state.fields.phone} onChange={this.handleChange}></input>
 					<h5 className="alerta2">{this.state.errors.email}</h5>
 					<h5 className="alerta2">{this.state.errors.phone}</h5>
-					<input type="text" placeholder="Address" className="text" name="address" value={this.state.fields.address} onChange={this.handleChange}></input> 
-					<select className="text">
+					<input type="text" placeholder="Age" className="text" name="address" value={this.state.fields.address} onChange={this.handleChange}></input> 
+					<select className="text" name="city" onChange={this.handleChange}>
 						<option value="" disabled selected>Select your City</option>
 	  					<option value="Bogota">Bogota</option>
 	  					<option value="Cali">Cali</option>
@@ -142,7 +212,9 @@ export class Registrer extends React.Component{
 				</div>
 				<div className="acept">
 					<label className={this.state.class_c} name="condiciones" ><input type="checkbox" name="condiciones" onClick={this.handleChange} value={this.state.fields.condiciones}/>I agree whit the terms and politics of privacity</label>
-					<button className="button" onClick={this.submitForm}>Create Acount</button>
+					<div className="buttonEfeccts">	
+						<button className="button" onClick={onClickSubmit}>Create Acount</button>
+					</div>
 				</div>
 			</div>
 		);

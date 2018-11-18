@@ -15,7 +15,7 @@ export class NavBar extends React.Component{
 		let sigin =	(<Link style={{ textDecoration: 'none' }} className="option" to="/registrer">sig In</Link>);
 		let explore = (<Link style={{ textDecoration: 'none' }} className="option" to="/home" >Explore</Link>);
 		let more =	(<Link style={{ textDecoration: 'none' }} className="option" to="/home">More</Link>);
-		let logout =(<Link style={{ textDecoration: 'none' }} className="option" to="/home">LogOut</Link>);
+		let logout =(<Link style={{ textDecoration: 'none' }} className="option" to="/home">Log out</Link>);
 		if(typeof(this.props.logIn)!== "undefined"){
 			login = <a></a>;
 		}

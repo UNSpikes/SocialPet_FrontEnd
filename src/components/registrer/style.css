@@ -35,7 +35,7 @@ h1{
 	padding: 5px;
 }
 
- button:hover{
+.buttonEfeccts button:hover{
 	background-color: #0033FF;
 	transition: background .5s;
 }
