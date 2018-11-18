@@ -1,4 +1,4 @@
-.blogBox{
+.blog-box{
 	margin-left: 100px;
 	margin-right: 100px;
 	height: 500px;
@@ -10,4 +10,46 @@
 
 #blogTitle{
     font-size: 5rem;
+}
+
+.blog-grid {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto;
+	grid-gap: 10px;
+	padding-bottom: 3rem;
+}
+
+.blog-date {
+	grid-column: 1/ span 2;
+}
+
+.blog-tags{
+	grid-column: 3/7;
+}
+
+.blog-grid > blogDate {
+	font-size: 30px;
+	color: cadetblue;
+}
+
+.blog-grid > blogTags {
+	background-color: darkkhaki;
+	text-align: center;
+  	font-size: 20px;
+  	border-radius: 10px 10px 10px 10px;
+  	-moz-border-radius: 10px 10px 10px 10px;
+  	-webkit-border-radius: 10px 10px 10px 10px;
+  	border: 0px solid #000000;
+}
+
+.blog-comment{
+	background-color: aliceblue;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-top: 3rem;
+	font-size: 20px;
+}
+
+.blog-comment .comment-img {
+	width:60px;
 }
