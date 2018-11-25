@@ -1,6 +1,6 @@
 import React from 'react';
 import {styles} from './perfilStyle';
-import '../styles/stylePer.css';
+import './stylePer.css';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 
 // Be sure to include styles at some point, probably during your bootstraping
