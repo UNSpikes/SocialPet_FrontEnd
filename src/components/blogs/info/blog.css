@@ -9,7 +9,7 @@
 }
 
 #blogTitle{
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 .blog-grid {
@@ -27,12 +27,12 @@
 	grid-column: 3/7;
 }
 
-.blog-grid > blogDate {
+.blog-grid > date {
 	font-size: 30px;
 	color: cadetblue;
 }
 
-.blog-grid > blogTags {
+.blog-grid > tags {
 	background-color: darkkhaki;
 	text-align: center;
   	font-size: 20px;
