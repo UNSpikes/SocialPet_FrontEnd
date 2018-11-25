@@ -1,13 +1,13 @@
 import React from 'react';
 import './blog.css';
-import { GET, POST } from '../../../JS/constants/api';
+import { GET, POST } from './../../../../JS/constants/api';
 
 let id = '6';
 
 export class Blog extends React.Component {
   constructor(props) {
     super(props);
-    id = this.props.blog_id;
+    //id = this.props.blog_id;
     this.state = {
       blog: [],
       tags: [],
@@ -42,6 +42,7 @@ export class Blog extends React.Component {
               <date className="blog-date">
                 { blog.date }
               </date>
+              
               <div className="blog-tags blog-grid">
                 { tags.map(tag =>
                   <tags key={ tag.id }>{ tag.tag_name }</tags>
@@ -52,6 +53,8 @@ export class Blog extends React.Component {
             <p>
               { blog.content }
             </p>
+
+            <hr></hr>
 
             <div className="blog-comment">
               <div className="media border p-3">
@@ -69,7 +72,6 @@ export class Blog extends React.Component {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -78,7 +80,6 @@ export class Blog extends React.Component {
 
   render() {
     const { loading } = this.state;
-    // const loadingWindow = <Loading/>;
 
     return (
       <div>

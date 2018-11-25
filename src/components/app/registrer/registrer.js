@@ -1,6 +1,8 @@
 import React from 'react';
-import {schema_1, blue_schema, registrerBox} from './registrerStyle'
-import '../../components/registrer/style.css';
+import './style.css';
+import axios from 'axios';
+import { serverLink } from './../../../JS/constants/links';
+import { Redirect } from "react-router-dom";
 
 export class Registrer extends React.Component{
 
@@ -9,6 +11,7 @@ export class Registrer extends React.Component{
 		this.state = {
 			fields: {},
 			errors: {},
+			redirect: false,
 			conditions: false,
 			class_c: "checkbox"
 		}
@@ -44,6 +47,53 @@ export class Registrer extends React.Component{
 			// mandar el post
 			//..
 			//..
+			let link = serverLink + 'users'
+			let config = {
+					headers: {
+						'Accept': '*/*',
+						'Content-Type': 'application/json'
+					}
+				}
+			this.setState({loading: true});
+			axios.post(
+					link,
+					{
+						
+						"name": this.state.fields.fisrtName,
+						"last_name": this.state.fields.lastName,
+						"age": this.state.fields.address,
+						"phone_number": this.state.fields.phone,
+						"additional_info": "",
+						"country": "colombia",
+						"city": this.state.fields.city,
+						"password": this.state.fields.password,
+						"password_confirmation": this.state.fields.secondPassword,
+						"email": this.state.fields.email
+						/*
+						"name": "nasdombre",
+						"last_name": "apellido",
+						"age": "45",
+						"phone_number": "1234567895",
+						"additional_info": "",
+						"country": "colombia",
+						"city": "bogota",
+						"password": "sdasdas12@as",
+						"email": "asdasd@sadasd.com"
+						*/
+					},
+					config
+				).then(res =>{
+					if(res.status !== 201){
+						console.error(res)	
+					}else{
+						this.setState({redirect: true});
+					}
+					this.setState({loading: false});
+				}).catch( error => {
+					this.setState({loading: false});
+					console.log(error);
+				});
+		
 		}
 	}
 
@@ -113,6 +163,9 @@ export class Registrer extends React.Component{
 
 
 	render(){
+		if (this.state.redirect) {
+			return (<Redirect to="/login" />);
+		  } else {
 		return(
 			<div className="registrerBox">
 				<h1>Registrate</h1>
@@ -133,8 +186,8 @@ export class Registrer extends React.Component{
 	  					<option value="Medellin">Medellin</option>
 	  					<option value="Cartagena">Cartagena</option>
 					</select>
-					<h5 className="alerta2"></h5>
-					<h5 className="alerta2"></h5>
+					<div className="alerta2" />
+					<div className="alerta2" />
 					<input type="Password" placeholder="Password" className="text" name="password" value={this.state.fields.password} onChange={this.handleChange}></input>
 					<input type="Password" placeholder="Confirm Password" className="text" name="secondPassword" value={this.state.fields.secondPassword} onChange={this.handleChange}></input>
 					<h5 className="alerta2">{this.state.errors.password}</h5>
@@ -143,8 +196,10 @@ export class Registrer extends React.Component{
 				<div className="acept">
 					<label className={this.state.class_c} name="condiciones" ><input type="checkbox" name="condiciones" onClick={this.handleChange} value={this.state.fields.condiciones}/>I agree whit the terms and politics of privacity</label>
 					<button className="button" onClick={this.submitForm}>Create Acount</button>
+					
 				</div>
 			</div>
 		);
+		  }
 	};
 } 

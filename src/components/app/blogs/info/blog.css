@@ -28,7 +28,7 @@
 }
 
 .blog-grid > date {
-	font-size: 30px;
+	font-size: 20px;
 	color: cadetblue;
 }
 
@@ -44,7 +44,6 @@
 
 .blog-comment{
 	background-color: aliceblue;
-	margin-left: 100px;
 	margin-right: 100px;
 	margin-top: 3rem;
 	font-size: 20px;

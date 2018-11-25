@@ -1,4 +1,3 @@
-import React from 'react';
 import {SET_TOKEN} from '../constants/actionTypes';
 import {RENDER_DOGS} from '../constants/actionTypes';
 

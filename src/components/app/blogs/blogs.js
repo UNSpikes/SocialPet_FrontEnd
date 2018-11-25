@@ -1,6 +1,7 @@
 import React from 'react';
 import './blogs.css';
-import { GET, POST } from '../../JS/constants/api';
+import { GET, POST } from './../../../JS/constants/api';
+import { Link } from "react-router-dom";
 
 export class Blogs extends React.Component {
   constructor(props) {
@@ -22,7 +23,6 @@ export class Blogs extends React.Component {
 
   renderBlogs() {
     const { blogs } = this.state;
-    const { tags } = this.state;
 
     return (
       <div className="blog-box">
@@ -33,22 +33,26 @@ export class Blogs extends React.Component {
             <hr></hr>
 
             <div className="blogs">
-              { blogs.map(blog =>
-                <div key={ blog.id } className="media border p-3">
-                    <div className="media-body">
-                      <div id='blogsTitle'>{ blog.title }</div>
+              {blogs.map(blog =>
+                <div key={blog.id} className="media border p-3">
+                  <div className="media-body">
+                    <div id='blogsTitle'>{blog.title}</div>
 
-                      <div className='blogs-grid'>
-                        <div className='blogs-date'>
-                          <small><i>{ blog.date }</i></small>
-                        </div>
+                    <div className='blogs-grid'>
+                      <div className='blogs-date'>
+                        <small><i>{blog.date}</i></small>
                       </div>
 
+                      <div className='blogs-like'>
+                        <i className='fa fa-heart' /> {blog.num_likes}
+                      </div>
+
+                      <Link to='/blog/info/'>ver más</Link>
                     </div>
+                  </div>
                 </div>
               )}
             </div>
-
           </div>
         </div>
       </div>
@@ -61,7 +65,7 @@ export class Blogs extends React.Component {
 
     return (
       <div>
-        { loading ? 'loading...' : this.renderBlogs() }
+        {loading ? 'loading...' : this.renderBlogs()}
       </div>
     );
   }

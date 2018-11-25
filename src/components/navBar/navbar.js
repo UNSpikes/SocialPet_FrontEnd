@@ -1,17 +1,15 @@
 import React from 'react';
-import {styles} from './navbarStyle';
-import '../../components/navBar/style.css'
+import './style.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Redirect } from 'react-router-dom';
 
-
 export class NavBar extends React.Component{ 
-	constructor(props){
-		super(props);
-	}
-
-	render(){
-		let login = (<Link style={{ textDecoration: 'none' }} className="option" to="/login">Log In</Link>);  
+  constructor(props){
+    super(props);
+  }
+  
+  render(){
+    let login = (<Link style={{ textDecoration: 'none' }} className="option" to="/login">Log In</Link>);  
 		let sigin =	(<Link style={{ textDecoration: 'none' }} className="option" to="/registrer">sig In</Link>);
 		let explore = (<Link style={{ textDecoration: 'none' }} className="option" to="/home" >Explore</Link>);
 		let more =	(<Link style={{ textDecoration: 'none' }} className="option" to="/home">More</Link>);

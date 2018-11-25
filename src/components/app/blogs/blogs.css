@@ -22,7 +22,7 @@
     font-size: 2rem;
 }
 
-.blog-grid {
+.blogs-grid {
 	display: grid;
 	grid-template-columns: auto auto auto auto auto auto;
 	grid-gap: 10px;
@@ -31,4 +31,12 @@
 .blogs-date{
     grid-column: 1/ span 2;
     color: cadetblue;
+}
+
+.blogs-like {
+	grid-column: 6;
+}
+
+.fa.fa-heart {
+	color: red;
 }

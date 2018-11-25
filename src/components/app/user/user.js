@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavBar } from './../navBar/navbar';
+import { NavBar } from './../../navBar/navbar';
 import axios from 'axios';
-import '../../components/user/style.css';
-import {serverLink } from '../../JS/constants/links';
+import './style.css';
+import {serverLink } from './../../../JS/constants/links';
 
 const mapStateToProps = state => {
 	//console.log(state.renderD.dogs);
