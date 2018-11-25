@@ -1,0 +1,42 @@
+.blogs-box{
+	margin-left: 100px;
+	margin-right: 100px;
+	height: 500px;
+	background-color: white; 
+	padding: 10px;
+	justify-content: center;
+	font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+
+#listTitle{
+    font-size: 5rem;
+}
+
+.blogs{
+	background-color: aliceblue;
+	margin-top: 3rem;
+	font-size: 20px;
+}
+
+#blogsTitle{
+    font-size: 2rem;
+}
+
+.blogs-grid {
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto;
+	grid-gap: 10px;
+}
+
+.blogs-date{
+    grid-column: 1/ span 2;
+    color: cadetblue;
+}
+
+.blogs-like {
+	grid-column: 6;
+}
+
+.fa.fa-heart {
+	color: red;
+}

@@ -1,0 +1,22 @@
+.navBar{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+	background-color: #212f3c;
+	height: 70px;
+}
+
+.navBar h1{
+	margin: 15px;
+	padding: 0;
+	color: white;
+}
+
+.navBar a{
+	text-align: center;
+	color: white;
+	margin: 17px;
+	font-size: 20px;
+}
