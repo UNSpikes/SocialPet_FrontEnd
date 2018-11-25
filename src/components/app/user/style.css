@@ -1,0 +1,12 @@
+.filtros{
+	width: 100px;
+}
+
+.lista-perros{
+	width: 200px;
+}
+
+.inicio{
+	display: grid;
+	grid-template-columns: 3fr 7fr;
+}

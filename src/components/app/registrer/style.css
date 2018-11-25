@@ -1,0 +1,92 @@
+*{
+	box-sizing: border-box;
+}
+
+.registrerBox{
+	margin-top: 2em;
+	margin-left: 200px;
+	margin-right: 200px;
+	height: 500px;
+	background-color: white; 
+	padding: 10px;
+	justify-content: center;
+	font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+
+h1{
+	font-weight: 400;
+}
+
+
+.acept{
+	display: grid;
+	grid-template-rows: 40px 50px;
+	align-items: center;
+	justify-items: center;
+}
+
+.button{
+	width: 200px;
+	height: 45px;
+	border-radius: 10px;
+	background-color: #0072ff;
+	color: white;
+	font-size: 1.3em;
+	padding: 5px;
+}
+
+ button:hover{
+	background-color: #0033FF;
+	transition: background .5s;
+}
+
+.form{
+	display: grid;
+	grid-template-rows: 40px 2em 40px 2em 40px 2em 40px;
+	grid-template-columns: 1fr 1fr;
+
+}
+
+.registrerBox h1{
+	text-align: center;
+}
+
+.text{
+	width: 90%;
+	height: 40px;
+	margin-left: 20px;
+	margin-left: 20px;
+}
+
+.checkbox {
+	color: grey;
+	font-size: 13px;
+	padding-left: 20px;
+	width: 100%;
+	text-align: left;
+}
+
+.alerta3 {
+	color: red;
+	font-size: 13px;
+	padding-left: 20px;
+	width: 100%;
+	text-align: left;
+}
+
+/*
+input[type=text]:focus {
+    background-color: lightblue;
+}
+*/
+
+.alerta2{
+
+	margin: 0;
+	padding: 0;
+	height: 2em;
+	text-align: left;
+	margin-left: 50px;
+	font-size: 13px;
+	color: red;
+}
