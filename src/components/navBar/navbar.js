@@ -14,6 +14,7 @@ export class NavBar extends React.Component{
 		let explore = (<Link style={{ textDecoration: 'none' }} className="option" to="/home" >Explore</Link>);
 		let more =	(<Link style={{ textDecoration: 'none' }} className="option" to="/home">More</Link>);
 		let blogs =	(<Link style={{ textDecoration: 'none' }} className="option" to="/blogs">Blogs</Link>);
+		let perfil =	(<Link style={{ textDecoration: 'none' }} className="option" to="/perfil">Perfil</Link>);
 		let logout =(<Link style={{ textDecoration: 'none' }} className="option" to="/home">LogOut</Link>);
 		if(typeof(this.props.logIn)!== "undefined"){
 			login = <a></a>;
@@ -34,9 +35,8 @@ export class NavBar extends React.Component{
 			<h1 className="title">SocialPet</h1>
 			{login}
 			{sigin}
-			{explore}
-			{more}
 			{ blogs }
+			{ perfil }
 			{logout}
 		</div>)
 	}
