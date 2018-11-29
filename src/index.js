@@ -1,23 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {LogIn} from './login/login';
-import {Registrer} from './registrer/registrer';
-import {Perfil} from './perfil/perfil';
-import {Home} from './landing/home';
-
+import {App} from './components/app/App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 import registerServiceWorker from './registerServiceWorker';
-import {BrowserRouter, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 
+import { createStore } from 'redux';
+import { Provider } from "react-redux";
+import { authenticate }  from './JS/reducers/authenticate';
+import Reducer from './JS/reducers';
+
+const store = createStore(Reducer);
 
 ReactDOM.render(
-    <BrowserRouter>
-        <div>
-            <Route  path='/home' component={Home} />
-            <Route  path='/login' component={LogIn}/>
-            <Route  path='/perfil' component={Perfil}/>
-            <Route  path='/registrer' component={Registrer}/>
-            {/* <Redirect from="/" to="/home" />*/}
-        </div>
-    </BrowserRouter>
-    , document.getElementById('root'));
+  <Provider store={store} >
+    <App/>
+  </Provider>,document.getElementById('root')
+);
