@@ -2,6 +2,7 @@ import React from 'react';
 import './blogs.css';
 import { GET, POST } from './../../../JS/constants/api';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export class Blogs extends React.Component {
   constructor(props) {
@@ -62,6 +63,14 @@ export class Blogs extends React.Component {
   render() {
     const { loading } = this.state;
     // const loadingWindow = <Loading/>;
+    /*
+    axios({
+      method: "GET",
+      url: "http://localhost:4200/blogs",
+      headers: {
+        Authorization: "Bearer " + localStorage.jwtToken
+      }
+    });*/
 
     return (
       <div>
