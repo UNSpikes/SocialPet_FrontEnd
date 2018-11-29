@@ -1,21 +1,37 @@
 import React from 'react';
 import {styles} from './perfilStyle';
-import '../styles/stylePer.css';
+import './stylePer.css';
+import { GET, POST } from './../../../JS/constants/api';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-
-// Be sure to include styles at some point, probably during your bootstraping
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+let user_id = '1';
 
 export class Perfil extends React.Component{
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: [],
+      loading: true
+    };
+  }
+  
+  componentDidMount(){
+  GET('users/'+user_id+'/info').then((res) => {
+      console.log(res);
+    }).catch((err) => console.log(err));
+  };
 	
 	
 	
 	render(){
+	  
+	  const {user} = this.state;
+	  
 		return (
             <div className = "titulo">
             <SideNav onSelect={(selected) => {// Add your code here
@@ -52,35 +68,36 @@ export class Perfil extends React.Component{
                 			
         
             <div className = "body"> 
-            <header class="site-header"></header>
-            <div class="cover-photo"></div>
+            <header className="site-header"></header>
+            <div className="cover-photo"></div>
             
-            <section class="left-col user-info">
-            <div class="profile-avatar">
-              <div class="inner"></div>
+            <section className="left-col user-info">
+            <div className="profile-avatar">
+              <div className="inner"></div>
             </div>
             <h1>Sacha Michan</h1>
             <h2>Colombia</h2>
-            <div class="meta">
-              <p><i class="fa fa-fw fa-map-marker"></i> Bogotá</p>
-              <p><i class="fa fa-fw fa-link"></i> sacha@gmail.com</p>
-              <p><i class="fa fa-fw fa-clock-o"></i> Edad: Dec 26, 2008</p>
+            <div className="meta">
+              <h1> {user.name}</h1>
+              <p><i className="fa fa-fw fa-map-marker" >{user.name}</i> Bogotá</p>
+              <p><i className="fa fa-fw fa-link"></i> sacha@gmail.com</p>
+              <p><i className="fa fa-fw fa-clock-o"></i> Edad: Dec 26, 2008</p>
             </div>
             </section>
             
-              <section class="section center-col content">
-                <nav class="profile-nav">
+              <section className="section center-col content">
+                <nav className="profile-nav">
                   <ul>
-                    <li class="active">Actividad</li>
+                    <li className="active">Actividad</li>
                     <li>Amigos</li>
                     <li>Fotos</li>
                     <li>Contactos</li>
                   </ul>
                 </nav>
-                <div class="unit user-hyped">
+                <div className="unit user-hyped">
                   <h3><a href="http://lookbook.nu/user/17530-Willabelle-O">Sacha</a> tiene  <a href="#more-looks-url">13 visitas</a></h3>
-                  <p class="time">12 horas apróximadamente</p>
-                  <ul class="image-grid col-3">
+                  <p className="time">12 horas apróximadamente</p>
+                  <ul className="image-grid col-3">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -88,12 +105,12 @@ export class Perfil extends React.Component{
                     <li></li>
                     <li></li>
                   </ul>
-                  <a href="#more-looks-url" class="more">View 7 more looks <i class="fa fa-angle-down"></i></a>
+                  <a href="#more-looks-url" className="more">View 7 more looks <i className="fa fa-angle-down"></i></a>
                 </div>
-                <div class="unit user-hyped">
+                <div className="unit user-hyped">
                   <h3><a href="http://lookbook.nu/user/17530-Willabelle-O">Willabelle</a> fanned <a href="#user-profile-url">Mizuho K</a></h3>
-                  <p class="time">16 hours ago</p>
-                  <ul class="image-grid col-3">
+                  <p className="time">16 hours ago</p>
+                  <ul className="image-grid col-3">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -101,11 +118,11 @@ export class Perfil extends React.Component{
                     <li></li>
                     <li></li>
                   </ul>
-                  <a href="#more-looks-url" class="more">Visto 7 veces.<i class="fa fa-angle-down"></i></a>
+                  <a href="#more-looks-url" className="more">Visto 7 veces.<i className="fa fa-angle-down"></i></a>
                 </div>
               </section>
               
-              <section class="right-col"></section>
+              <section className="right-col"></section>
             
             </div>
             </div>
