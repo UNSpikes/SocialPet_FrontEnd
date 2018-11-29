@@ -22,7 +22,11 @@ export class Perfil extends React.Component{
   
   componentDidMount(){
   GET('users/'+user_id+'/info').then((res) => {
-      console.log(res);
+      console.log(res)
+      this.setState({  
+        user: res.data.user,
+        loading: false,
+      });
     }).catch((err) => console.log(err));
   };
 	
@@ -75,13 +79,12 @@ export class Perfil extends React.Component{
             <div className="profile-avatar">
               <div className="inner"></div>
             </div>
-            <h1>Sacha Michan</h1>
-            <h2>Colombia</h2>
+            <h1>{user.name +" "+ user.last_name}</h1>
+            <h2>{user.country}</h2>
             <div className="meta">
-              <h1> {user.name}</h1>
-              <p><i className="fa fa-fw fa-map-marker" >{user.name}</i> Bogotá</p>
-              <p><i className="fa fa-fw fa-link"></i> sacha@gmail.com</p>
-              <p><i className="fa fa-fw fa-clock-o"></i> Edad: Dec 26, 2008</p>
+              <p><i className="fa fa-fw fa-map-marker" ></i>{user.city}</p>
+              <p><i className="fa fa-fw fa-link"></i>{user.email}</p>
+              <p><i className="fa fa-fw fa-clock-o"></i> Edad: {user.age}</p>
             </div>
             </section>
             
@@ -89,9 +92,9 @@ export class Perfil extends React.Component{
                 <nav className="profile-nav">
                   <ul>
                     <li className="active">Actividad</li>
-                    <li>Amigos</li>
+                    <li>Seguir</li>
                     <li>Fotos</li>
-                    <li>Contactos</li>
+                    <li></li>
                   </ul>
                 </nav>
                 <div className="unit user-hyped">
@@ -105,11 +108,11 @@ export class Perfil extends React.Component{
                     <li></li>
                     <li></li>
                   </ul>
-                  <a href="#more-looks-url" className="more">View 7 more looks <i className="fa fa-angle-down"></i></a>
+                  <a href="#more-looks-url" className="more"> 7 likes <i className="fa fa-angle-down"></i></a>
                 </div>
                 <div className="unit user-hyped">
-                  <h3><a href="http://lookbook.nu/user/17530-Willabelle-O">Willabelle</a> fanned <a href="#user-profile-url">Mizuho K</a></h3>
-                  <p className="time">16 hours ago</p>
+                  <h3><a href="http://lookbook.nu/user/17530-Willabelle-O">Mateo</a> tiene <a href="#user-profile-url">10 visitas</a></h3>
+                  <p className="time">1 hora apróximadamente</p>
                   <ul className="image-grid col-3">
                     <li></li>
                     <li></li>
@@ -118,11 +121,15 @@ export class Perfil extends React.Component{
                     <li></li>
                     <li></li>
                   </ul>
-                  <a href="#more-looks-url" className="more">Visto 7 veces.<i className="fa fa-angle-down"></i></a>
+                  <a href="#more-looks-url" className="more">100 likes.<i className="fa fa-angle-down"></i></a>
                 </div>
               </section>
               
-              <section className="right-col"></section>
+              <section className="right-col">
+              <h4>{" "+" "}Acerca de {user.name}</h4>
+              <h6>Información acerca del usuario</h6>
+              
+              </section>
             
             </div>
             </div>
