@@ -27,6 +27,7 @@ export class SubmitFile extends React.Component{
 		const formData = new FormData();
 		formData.append('body',this.state.file)
 		let url = 'https://socialped-back-unal.herokuapp.com/certificados?tipo=raza&dog_id=2&user_id=2';
+		//let url = 'https://socialped-back-unal.herokuapp.com/certificados';
 		let config = {
 					headers: {
 						'Accept': '*/*',
@@ -51,6 +52,7 @@ export class SubmitFile extends React.Component{
 			).then(res =>{
 				this.setState({loading:false});
 				console.log(res.data);
+				console.log("hola")
 			}).catch(error => {
 				this.setState({loading:false});
 				console.log(error)

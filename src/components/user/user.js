@@ -6,6 +6,8 @@ import { NavBar } from './../navBar/navbar';
 import { SubmitFile } from 		'./../submitFile/submitFile';
 import { ViewDocument } from 	'./../viewDocument/viewDocument';
 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import axios from 'axios';
 
 import '../../components/user/style.css';
@@ -113,6 +115,7 @@ class connectUser extends React.Component {
 				<NavBar logIn="false" sigIn="false"/>
 				<SubmitFile/>
 				<ViewDocument/>
+				<Link to="perfil">Ir a perfil</Link>
 				<div className="inicio">
 					<div className="filtros">
 						<div className="raza">

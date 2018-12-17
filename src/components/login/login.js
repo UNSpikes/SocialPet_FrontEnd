@@ -121,17 +121,21 @@ class LogInForm extends React.Component{
 			//enviar
 			let token = '';
 			let id = 1;
-			let link = serverLink + 'user_token';
+			let link = serverLink + 'auth/sign_in/token';
+			//let link = serverLink + 'user_token';
 			let config = {
 					headers: {
 						'Accept': '*/*',
-						'Content-Type': 'application/json'
+						'Content-Type': 'application/json',
 					}
 				}
 			this.setState({loading: true})
+			//console.log(link);
+
 			axios.post(link, {"auth": {"email": this.state.user, "password": this.state.password}}, config).then(
 				res => {
 					if(res.status === 201 ){
+						console.log(res);
 						token = res.data.jwt;
 						this.props.setToken({token, id});
 						this.setState({redirect: true});
