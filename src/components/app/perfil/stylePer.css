@@ -62,7 +62,7 @@ a {
   float: left;
   width: 480px;
   margin-right: 24px;
-  min-height: 400px;
+  min-height: 800px;
 }
 
 .right-col1 {
@@ -133,17 +133,18 @@ border: 2px solid #5878ca;}
   background-color: #EFEFEF;
 }
 .image-grid.col-3 li {
-  width: 32%;
-  margin-right: 2%;
+  width: 400%;
+  margin-right: 15%;
   margin-bottom: 2%;
-  height: 0;
-  padding-bottom: 30%;
+  height: 45%;
+  padding-bottom: 280%;
   background-image: url(https://placeimg.com/200/200/animals?t=1540773971771);
+  background-repeat: no-repeat;
   -webkit-background-size: 100%;
   background-size: 100%;
 }
 .image-grid.col-3 li:nth-child(3n) {
-  margin-right: 0;
+  margin-right: 20%;
 }
 
 .profile-nav {
@@ -166,12 +167,12 @@ border: 2px solid #5878ca;}
 }
 
 .content .unit {
-  padding: 8px 0 10px 0;
+  padding: 8px 0 14px 0;
   border-bottom: 2px solid #E1E1E1;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 }
 .content .unit:last-child {
-  margin-bottom: 16px;
+  margin-bottom: 60px;
 }
 .content .unit h3 {
   margin-bottom: 4px;
@@ -179,7 +180,7 @@ border: 2px solid #5878ca;}
 }
 .content .unit h3 a {
   color: #1e1e1e;
-  font-weight: 600;
+  font-weight: 800;
 }
 .content .unit p.time {
   color: #777;
@@ -187,9 +188,26 @@ border: 2px solid #5878ca;}
   margin-bottom: 8px;
 }
 .content .unit .more {
-  font-size: 14px;
+  margin-bottom: 200px;
+  font-size: 30px;
   color: #777;
+  font-weight: 400;
+ 
+  
+  
+  
 }
 .content .unit .more a {
+  margin-bottom: 50px;
   color: #777;
+  display: none;
+  
+  
+  
 }
+
+.lij{
+  
+height:300px;
+}
+

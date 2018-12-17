@@ -16,6 +16,7 @@ export class Perfil extends React.Component{
     super(props);
     this.state = {
       user: [],
+      dogs:[],
       loading: true
     };
   }
@@ -25,6 +26,7 @@ export class Perfil extends React.Component{
       console.log(res)
       this.setState({  
         user: res.data.user,
+        dogs: res.data.dogs,
         loading: false,
       });
     }).catch((err) => console.log(err));
@@ -33,9 +35,14 @@ export class Perfil extends React.Component{
 	
 	
 	render(){
-	  
+
+
 	  const {user} = this.state;
-	  
+	  const {dogs} = this.state;
+	  const dogsList = dogs.map(tag =>
+                         ({name: tag.name, id:tag.id })
+                  )
+console.log(dogsList)
 		return (
             <div className = "titulo">
             <SideNav onSelect={(selected) => {// Add your code here
@@ -97,32 +104,64 @@ export class Perfil extends React.Component{
                     <li></li>
                   </ul>
                 </nav>
+                
+                {dogsList.map(dog => 
+                      <dogs name={dog.name} id={dog.id}/>
+                )}
+                
+                
+                <dogs name={dogsList.name} id={dogsList.id}/>
+
                 <div className="unit user-hyped">
-                  <h3><a href="http://lookbook.nu/user/17530-Willabelle-O">Sacha</a> tiene  <a href="#more-looks-url">13 visitas</a></h3>
+                  <h3><a href="http://lookbook.nu/user/17530-Willabelle-O">
+                  {dogsList}                    
+                  </a> tiene  <a href="#more-looks-url">13 visitas</a></h3>
                   <p className="time">12 horas apróximadamente</p>
                   <ul className="image-grid col-3">
                     <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
                   </ul>
-                  <a href="#more-looks-url" className="more"> 7 likes <i className="fa fa-angle-down"></i></a>
+                  <div className="lij">
+                  
+                  <a href="#more-looks-url" className="more"> <br /><br /> <br /><br /><br /><br />7 likes</a>
+                  </div>
                 </div>
-                <div className="unit user-hyped">
-                  <h3><a href="http://lookbook.nu/user/17530-Willabelle-O">Mateo</a> tiene <a href="#user-profile-url">10 visitas</a></h3>
-                  <p className="time">1 hora apróximadamente</p>
+                
+                
+                  <div className="unit user-hyped">
+                  <h3><a href="http://lookbook.nu/user/17530-Willabelle-O">
+                  {dogsList}                    
+                  </a> tiene  <a href="#more-looks-url">10 visitas</a></h3>
+                  <p className="time">12 horas apróximadamente</p>
                   <ul className="image-grid col-3">
                     <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                  </ul>
+                  <div className="lij">
+                  
+                  <a href="#more-looks-url" className="more"> <br /><br /> <br /><br /><br /><br />2 likes</a>
+                  </div>
+                </div>
+                
+                
+                  <div className="unit user-hyped">
+                  <h3><a href="http://lookbook.nu/user/17530-Willabelle-O">
+                  {dogsList}                    
+                  </a> tiene  <a href="#more-looks-url">13 visitas</a></h3>
+                  <p className="time">12 horas apróximadamente</p>
+                  <ul className="image-grid col-3">
                     <li></li>
                   </ul>
-                  <a href="#more-looks-url" className="more">100 likes.<i className="fa fa-angle-down"></i></a>
+                  <div className="lij">
+                  
+                  <a href="#more-looks-url" className="more"> <br /><br /> <br /><br /><br /><br />7 likes</a>
+                  </div>
                 </div>
+                
+                
+                
+                
+                
+               
+                
               </section>
               
               <section className="right-col">
