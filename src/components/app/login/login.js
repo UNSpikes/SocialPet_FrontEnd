@@ -132,7 +132,7 @@ class LogInForm extends React.Component {
         method: "GET",
         url: "http://localhost:4200/blogs",
         headers: {
-          Authorization: "Bearer " + localStorage.jwtToken
+          Authorization: "Bearer " + localStorage.getItem("jwtToken")
         }
       });
       return (<Redirect to="/blogs" />);
