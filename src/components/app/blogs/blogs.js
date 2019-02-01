@@ -22,7 +22,13 @@ export class Blogs extends React.Component {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwtToken")
       }
-    });
+    }).then((res) => {
+      this.setState({
+        blogs:res.data,
+        loading:false,
+      });
+    }) 
+      .catch((err) => console.log(err));
   };
 
   renderBlogs() {
@@ -65,7 +71,6 @@ export class Blogs extends React.Component {
 
   render() {
     const { loading } = this.state;
-    console.log(loading)
     return (
       <div>
         {loading ? 'loading...' : this.renderBlogs()}
