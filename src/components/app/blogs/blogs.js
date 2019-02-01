@@ -14,12 +14,14 @@ export class Blogs extends React.Component {
   }
 
   componentDidMount() {
-    GET('blogs/').then((res) => {
-      this.setState({
-        blogs: res.data,
-        loading: false,
-      });
-    }).catch((err) => console.log(err));
+    axios({
+      method: "GET",
+      url: "http://localhost:4200/blogs",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwtToken")
+        //'Authorization': "Bearer " + localStorage.getItem("jwtToken")
+      }
+    });
   };
 
   renderBlogs() {
@@ -62,16 +64,6 @@ export class Blogs extends React.Component {
 
   render() {
     const { loading } = this.state;
-    // const loadingWindow = <Loading/>;
-    /*
-    axios({
-      method: "GET",
-      url: "http://localhost:4200/blogs",
-      headers: {
-        Authorization: "Bearer " + localStorage.jwtToken
-      }
-    });*/
-
     return (
       <div>
         {loading ? 'loading...' : this.renderBlogs()}

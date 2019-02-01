@@ -103,10 +103,12 @@ class LogInForm extends React.Component {
         res => {
           if (res.status === 201) {
             token = res.data.jwt;
+            //token = res.jwt
             localStorage.setItem("jwtToken", token);
             this.props.setToken({ token, id });
             this.setState({ redirect: true });
-            //console.log(res)
+            console.log("AQUI!!!!!!")
+            console.log(localStorage.getItem("jwtToken"))
           } else {
             this.setState({ userError: "Usuario o Contraseña incorrectos" })
           }
@@ -128,13 +130,6 @@ class LogInForm extends React.Component {
     let twitter = 'https://tarotdecarmenylidia.files.wordpress.com/2016/08/twitter-icon-770x769.png';
 
     if (this.state.redirect) {
-      axios({
-        method: "GET",
-        url: "http://localhost:4200/blogs",
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwtToken")
-        }
-      });
       return (<Redirect to="/blogs" />);
     } else {
       return (
