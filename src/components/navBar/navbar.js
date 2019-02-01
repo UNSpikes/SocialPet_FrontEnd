@@ -9,6 +9,7 @@ export class NavBar extends React.Component{
   }
   
   render(){
+<<<<<<< HEAD
     let login = (<Link style={{ textDecoration: 'none' }} className="option" to="/login">Log In</Link>);  
 		let sigin =	(<Link style={{ textDecoration: 'none' }} className="option" to="/registrer">sig In</Link>);
 		let explore = (<Link style={{ textDecoration: 'none' }} className="option" to="/home" >Explore</Link>);
@@ -16,17 +17,30 @@ export class NavBar extends React.Component{
 		let blogs =	(<Link style={{ textDecoration: 'none' }} className="option" to="/blogs">Blogs</Link>);
 		let perfil =	(<Link style={{ textDecoration: 'none' }} className="option" to="/perfil">Perfil</Link>);
 		let logout =(<Link style={{ textDecoration: 'none' }} className="option" to="/home">LogOut</Link>);
+=======
+    	let login = (<Link style={{ textDecoration: 'none' }} className="option" to="/login">Log In</Link>);  
+		let sigin =	(<Link style={{ textDecoration: 'none' }} className="option" to="/registrer">sig In</Link>);
+		let perfil =(<Link style={{ textDecoration: 'none' }} className="option" to="/perfil">Perfil</Link>);
+		let blogs =	(<Link style={{ textDecoration: 'none' }} className="option" to="/blogs">Blogs</Link>);
+		let logout =(<Link style={{ textDecoration: 'none' }} className="option" to="/home">LogOut</Link>);
+
+>>>>>>> kvsierrab
 		if(typeof(this.props.logIn)!== "undefined"){
 			login = <a></a>;
 		}
 		if(typeof(this.props.sigIn)!== "undefined"){
 			sigin = <a></a>;
 		}
+<<<<<<< HEAD
 		if(typeof(this.props.explore)!== "undefined"){
 			explore = <a></a>;
 		}
 		if(typeof(this.props.more)!== "undefined"){
 			more = <a></a>;
+=======
+		if(typeof(this.props.perfil)!== "undefined"){
+			perfil = <a></a>;
+>>>>>>> kvsierrab
 		}
 		if(typeof(this.props.logOut)!== "undefined"){
 			logout = <a></a>;
@@ -35,9 +49,16 @@ export class NavBar extends React.Component{
 			<h1 className="title">SocialPet</h1>
 			{login}
 			{sigin}
+<<<<<<< HEAD
 			{ blogs }
 			{ perfil }
 			{logout}
+=======
+			{perfil}
+			{ blogs }
+			{logout}
+			
+>>>>>>> kvsierrab
 		</div>)
 	}
 }
