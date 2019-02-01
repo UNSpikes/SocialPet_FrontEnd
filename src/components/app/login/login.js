@@ -107,8 +107,6 @@ class LogInForm extends React.Component {
             localStorage.setItem("jwtToken", token);
             this.props.setToken({ token, id });
             this.setState({ redirect: true });
-            console.log("AQUI!!!!!!")
-            console.log(localStorage.getItem("jwtToken"))
           } else {
             this.setState({ userError: "Usuario o Contraseña incorrectos" })
           }

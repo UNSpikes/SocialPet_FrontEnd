@@ -11,6 +11,8 @@ export class Blogs extends React.Component {
       blogs: [],
       loading: true
     };
+
+    console.log(this.state)
   }
 
   componentDidMount() {
@@ -19,7 +21,6 @@ export class Blogs extends React.Component {
       url: "http://localhost:4200/blogs",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwtToken")
-        //'Authorization': "Bearer " + localStorage.getItem("jwtToken")
       }
     });
   };
@@ -64,6 +65,7 @@ export class Blogs extends React.Component {
 
   render() {
     const { loading } = this.state;
+    console.log(loading)
     return (
       <div>
         {loading ? 'loading...' : this.renderBlogs()}
