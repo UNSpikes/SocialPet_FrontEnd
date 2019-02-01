@@ -34,6 +34,7 @@ export class NavBar extends React.Component{
 			{perfil}
 			{ blogs }
 			{logout}
+			
 		</div>)
 	}
 }
