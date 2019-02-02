@@ -1,13 +1,12 @@
 import React from 'react';
 import './blog.css';
-import { GET, POST } from './../../../../JS/constants/api';
+import { GET } from './../../../../JS/constants/api';
 
 let id = '6';
 
 export class Blog extends React.Component {
   constructor(props) {
     super(props);
-    //id = this.props.blog_id;
     this.state = {
       blog: [],
       tags: [],
@@ -16,6 +15,7 @@ export class Blog extends React.Component {
   }
 
   componentDidMount(){
+    let id = localStorage.getItem("AuxID");
     GET('blogs/'+id+'/info').then((res) => {
       this.setState({
         blog: res.data.blog,
@@ -28,8 +28,8 @@ export class Blog extends React.Component {
 
   renderBlog(){
     const { blog } = this.state;
-    const { tags } = this.state;
-
+    const { tags } = this.state
+    
     return (
       <div className="blog-box">
         <div className="container-fluid main-container">

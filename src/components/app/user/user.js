@@ -7,6 +7,7 @@ import {serverLink } from './../../../JS/constants/links';
 
 const mapStateToProps = state => {
 	//console.log(state.renderD.dogs);
+	console.log(state);
 	return {
 		tokens: state.authentic.tokens,
 	};
@@ -16,7 +17,7 @@ const mapStateToProps = state => {
 class connectUser extends React.Component {
 	constructor(props){
 		super(props);
-		console.log(this.props.dogs);
+		//console.log(this.props.dogs);
 		this.state = {
 			filters: {
 				edge: "0",
@@ -48,7 +49,7 @@ class connectUser extends React.Component {
 			serverLink + '/breeds',
 			config
 			).then(res =>{
-				console.log(res.data);
+				//console.log(res.data);
 				let dogs = []
 				let i = 0, cont = 0;
 				for (i = 0; i < res.data.length; i++){

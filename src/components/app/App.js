@@ -10,6 +10,17 @@ import { Blogs } from './blogs/blogs';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 export class App extends React.Component {
+  constructor() {
+    super();
+    localStorage.setItem("IsLogged", false);
+    localStorage.setItem("AuxID", "");
+    localStorage.setItem("jwt", "");
+    localStorage.setItem("UsrID", "");
+    localStorage.setItem("UsrName", "");
+    localStorage.setItem("UsrLastName", "");
+    localStorage.setItem("UsrProfile", false);
+  }
+
   render() {
     return (
       <BrowserRouter>

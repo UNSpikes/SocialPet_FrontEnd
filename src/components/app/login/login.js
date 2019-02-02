@@ -8,6 +8,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { serverLink } from './../../../JS/constants/links';
 import GoogleLogin from 'react-google-login';
+import { ADD_SESION } from './../../../JS/constants/api'
 
 import { googleID, googleSecretoCliente } from './../../../JS/constants/clientGoogle';
 
@@ -48,6 +49,7 @@ class LogInForm extends React.Component {
     }
     axios.post(link, { "auth": { "tokenId": response.tokenId } }, config).then(
       res => {
+        console.log(res)
         if (res.status === 200) {
           token = response.tokenId;
           this.props.setToken({ token, id });
@@ -103,7 +105,7 @@ class LogInForm extends React.Component {
         res => {
           if (res.status === 201) {
             token = res.data.jwt;
-            this.props.setToken({ token, id });
+            ADD_SESION(token);
             this.setState({ redirect: true });
             //console.log(res)
           } else {
@@ -127,7 +129,7 @@ class LogInForm extends React.Component {
     let twitter = 'https://tarotdecarmenylidia.files.wordpress.com/2016/08/twitter-icon-770x769.png';
 
     if (this.state.redirect) {
-      return (<Redirect to="/blogs" />);
+      return (<Redirect to="/home"/>);
     } else {
       return (
         <div className="loginBox">

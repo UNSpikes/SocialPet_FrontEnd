@@ -2,7 +2,8 @@ import {SET_TOKEN} from '../constants/actionTypes';
 import {RENDER_DOGS} from '../constants/actionTypes';
 
 const token = {
-	tokens: []
+	tokens: [],
+	isLogged: false
 };
 
 const dogList = {
@@ -13,6 +14,8 @@ export const authenticate = (state = token, action ) =>{
 	switch (action.type){
 		case SET_TOKEN:
 			return { ...state, tokens: [...state.tokens, action.token_element] };
+		case RENDER_DOGS:
+			return {...state, dogs: [...state.dogs, action.dogs] };
 		default:
 			return state;
 	} 

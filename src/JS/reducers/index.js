@@ -5,5 +5,5 @@ import {renderDogs} from './authenticate'
 
 export default combineReducers({
 	authentic: authenticate,
-	renderD: renderDogs
+	//renderD: renderDogs
 })

@@ -13,7 +13,7 @@ export class Blogs extends React.Component {
   }
 
   componentDidMount() {
-    GET('blogs/').then((res) => {
+    GET('/blogs').then((res) => {
       this.setState({
         blogs: res.data,
         loading: false,
@@ -47,7 +47,9 @@ export class Blogs extends React.Component {
                         <i className='fa fa-heart' /> {blog.num_likes}
                       </div>
 
-                      <Link to='/blog/info/'>ver más</Link>
+                      <Link to='/blog/info/'>
+                        <div onClick={() => {localStorage.setItem("AuxID", blog.id)}}>Ver más</div>
+                      </Link>
                     </div>
                   </div>
                 </div>
