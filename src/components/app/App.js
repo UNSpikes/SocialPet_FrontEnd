@@ -25,7 +25,7 @@ export class App extends React.Component {
     return (
       <BrowserRouter>
         <div>
-          <NavBar logOut="false" />
+          <NavBar />
           <Route path='/admin' component={Admin} />
           <Route path='/home' component={Home} />
           <Route path='/login' component={LogIn} />

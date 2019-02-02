@@ -2,6 +2,7 @@ import React from 'react';
 import './blogs.css';
 import { GET, POST } from './../../../JS/constants/api';
 import { Link } from "react-router-dom";
+import { Loading } from "./../loading/loading";
 
 export class Blogs extends React.Component {
   constructor(props) {
@@ -63,11 +64,11 @@ export class Blogs extends React.Component {
 
   render() {
     const { loading } = this.state;
-    // const loadingWindow = <Loading/>;
-
+    const loadingWindow = <Loading/>;
+    
     return (
       <div>
-        {loading ? 'loading...' : this.renderBlogs()}
+        {loading ? loadingWindow : this.renderBlogs()}
       </div>
     );
   }

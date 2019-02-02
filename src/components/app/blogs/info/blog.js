@@ -1,8 +1,7 @@
 import React from 'react';
 import './blog.css';
 import { GET } from './../../../../JS/constants/api';
-
-let id = '6';
+import { Loading } from "./../../loading/loading";
 
 export class Blog extends React.Component {
   constructor(props) {
@@ -80,10 +79,11 @@ export class Blog extends React.Component {
 
   render() {
     const { loading } = this.state;
+    const loadingWindow = <Loading/>;
 
     return (
       <div>
-        { loading ? 'loading...' : this.renderBlog() }
+        { loading ? loadingWindow : this.renderBlog() }
       </div>
     );
   }
