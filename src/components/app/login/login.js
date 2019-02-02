@@ -128,7 +128,7 @@ class LogInForm extends React.Component {
     let twitter = 'https://tarotdecarmenylidia.files.wordpress.com/2016/08/twitter-icon-770x769.png';
 
     if (this.state.redirect) {
-      return (<Redirect to="/blogs" />);
+      return (<Redirect to="/personal" />);
     } else {
       return (
         <div className="loginBox">

@@ -4,7 +4,7 @@ import './stylePer.css';
 import { GET, POST } from './../../../JS/constants/api';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-
+import axios from 'axios';
 
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -22,14 +22,20 @@ export class Perfil extends React.Component{
   }
   
   componentDidMount(){
-  GET('users/'+user_id+'/info').then((res) => {
-      console.log(res)
-      this.setState({  
+    axios({
+      method: "GET",
+      url: "http://localhost:4200/users/"  + user_id + "/info/",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwtToken")
+      }
+    }).then((res) => {
+      this.setState({
         user: res.data.user,
         dogs: res.data.dogs,
         loading: false,
       });
-    }).catch((err) => console.log(err));
+    }) 
+      .catch((err) => console.log(err));
   };
 	
 	

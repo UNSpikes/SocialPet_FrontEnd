@@ -14,6 +14,7 @@ import './lib/bootstrap/fonts/glyphicons-halflings-regular-1.eot';
 import './lib/bootstrap/fonts/glyphicons-halflings-regular.eot';
 import './lib/bootstrap/fonts/glyphicons-halflings-regular.svg';
 import './lib/bootstrap/fonts/glyphicons-halflings-regular.ttf';
+import axios from 'axios';
 
 
 
@@ -31,14 +32,20 @@ export class Personal extends React.Component{
           }
           
           componentDidMount(){
-          GET('users/'+user_id+'/info').then((res) => {
-              console.log(res)
-              this.setState({  
+            axios({
+              method: "GET",
+              url: "http://localhost:4200/users/"  + user_id + "/info/",
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("jwtToken")
+              }
+            }).then((res) => {
+              this.setState({
                 user: res.data.user,
                 dogs: res.data.dogs,
                 loading: false,
               });
-            }).catch((err) => console.log(err));
+            }) 
+              .catch((err) => console.log(err));
           };
 
     render(){
@@ -157,7 +164,7 @@ export class Personal extends React.Component{
                       </a>
                     </div>
                     <div className="col-xs-9 col-sm-10 info-user">
-                      <h3><a href="personal-profile.html" title="Profile">My User</a></h3>
+                      <h3><a href="personal-profile.html" title="Profile">{user.name +" "+ user.last_name}</a></h3>
                       <p><i>2h</i></p>
                     </div>
                   </div>
@@ -188,7 +195,7 @@ export class Personal extends React.Component{
                       </a>
                     </div>
                     <div className="col-xs-9 col-sm-10 info-user">
-                      <h3><a href="personal-profile.html" title="Profile">My User</a></h3>
+                      <h3><a href="personal-profile.html" title="Profile">{user.name +" "+ user.last_name}</a></h3>
                       <p><i>2h</i></p>
                     </div>
                   </div>
@@ -220,7 +227,7 @@ export class Personal extends React.Component{
                       </a>
                     </div>
                     <div className="col-xs-9 col-sm-10 info-user">
-                      <h3><a href="personal-profile.html" title="Profile">My User</a></h3>
+                      <h3><a href="personal-profile.html" title="Profile">{user.name +" "+ user.last_name}</a></h3>
                       <p><i>2h</i></p>
                     </div>
                   </div>
