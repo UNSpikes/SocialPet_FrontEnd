@@ -69,7 +69,7 @@ export class Wall extends React.Component{
               </span>
               <ul className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownSettings">
                 <li>
-                  <a href="settings.html" title="Settings" data-toggle="modal" data-target="#settingsmodal">
+                  <a href="settings" title="Settings" data-toggle="modal" data-target="#settingsmodal">
                     <div className="col-xs-4">
                       <i className="fa fa-wrench" aria-hidden="true" />
                     </div>
@@ -124,7 +124,7 @@ export class Wall extends React.Component{
             </span>
           </div>
           <div className="second-icon menu-icon">
-            <span><a href="wall.js" title="Wall"><span className="hidden-xs hidden-sm">Wall</span> <i className="fa fa-database" aria-hidden="true" /></a>
+            <span><a href="wall" title="Wall"><span className="hidden-xs hidden-sm">Wall</span> <i className="fa fa-database" aria-hidden="true" /></a>
             </span>
           </div>
         </header>

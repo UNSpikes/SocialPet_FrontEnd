@@ -2,24 +2,32 @@
 import React from 'react';
 import './style.css';
 import './lib/bootstrap/css/bootstrap.min.css';
-import './lib/bootstrap-switch/css/bootstrap-switch.min.css';
-import {socialyte} from './js/socialyte.min';
-import {lazy} from './js/lazy-load.min';
+import './lib/bootstrap/css/bootstrap.css';
+import './lib/bootstrap/css/dist/bootstrap.css';
+import './lib/bootstrap/css/less/scaffolding.less';
+import './lib/bootstrap/css/less/normalize.less';
+import './lib/bootstrap/css/less/mixins/border-radius.less';
+import './lib/bootstrap/css/less/utilities.less';
+import './lib/bootstrap/css/less/navs.less';
+
+//import './lib/bootstrap-switch/css/bootstrap-switch.min.css';
+import {socialyte} from './js/socialyte.min.js';
+import {lazy} from './js/lazy-load.min.js';
+
+
 import user1 from './img/user.jpeg';
 import post from './img/post.jpeg';
 import load from './img/load.gif';
+
 import { GET, POST } from './../../../JS/constants/api';
-import './lib/font-awesome/css/font-awesome.min.css';
-import './lib/bootstrap/fonts/glyphicons-halflings-regular-1.eot';
-import './lib/bootstrap/fonts/glyphicons-halflings-regular.eot';
-import './lib/bootstrap/fonts/glyphicons-halflings-regular.svg';
-import './lib/bootstrap/fonts/glyphicons-halflings-regular.ttf';
 import axios from 'axios';
 
 
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 let user_id = '1';
+let like = 0;
+let i;
 
 export class Personal extends React.Component{
         constructor(props) {
@@ -27,10 +35,19 @@ export class Personal extends React.Component{
             this.state = {
               user: [],
               dogs:[],
-              loading: true
+              loading: true,
+              isToggleOn: true
             };
+            this.handleClick = this.handleClick.bind(this);
           }
           
+          handleClick() {
+            this.setState(state => ({
+              isToggleOn: !state.isToggleOn
+            }));
+          }
+
+
           componentDidMount(){
             axios({
               method: "GET",
@@ -58,51 +75,22 @@ export class Personal extends React.Component{
         console.log(dogsList)
         
     return (
-        
+     
       <div className = "Titulo">
-       
+        <script src="https://twemoji.maxcdn.com/twemoji.min.js"></script>
         {/*Header with Nav */}
         <header className="text-right">
           <form className="text-left search" method="GET">
             <input name="q" type="text" placeholder="Search.." />
           </form>
           <div className="menu-icon">
-            <div className="dropdown">
-              <span className="dropdown-toggle" role="button" id="dropdownSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <span className="hidden-xs hidden-sm">Settings</span> <i className="fa fa-cogs" aria-hidden="true" />
+            <div className="second-icon menu-icon">
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="login" title="Loguot"><span className="hidden-xs hidden-sm">Logout</span> <i className="fa fa-sign-out" aria-hidden="true" /></a> 
               </span>
-              <ul className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownSettings">
-                <li>
-                  <a href="settings.html" title="Settings" data-toggle="modal" data-target="#settingsmodal">
-                    <div className="col-xs-4">
-                      <i className="fa fa-wrench" aria-hidden="true" />
-                    </div>
-                    <div className="col-xs-8 text-left">
-                      <span>Settings</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" title="Settings">
-                    <div className="col-xs-4">
-                      <i className="fa fa-question" aria-hidden="true" />
-                    </div>
-                    <div className="col-xs-8 text-left">
-                      <span>FAQ</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" title="Settings">
-                    <div className="col-xs-4">
-                      <i className="fa fa-sign-out" aria-hidden="true" />
-                    </div>
-                    <div className="col-xs-8 text-left">
-                      <span>Logout</span>
-                    </div>
-                  </a>
-                </li>
-              </ul>
+            </div>
+            <div className="second-icon menu-icon">
+                <span><a href="settings" title="Settings"><span className="hidden-xs hidden-sm">Settings</span> <i className="fa fa-cogs" aria-hidden="true"/></a>
+                </span>   
             </div>
           </div>
           <div className="second-icon dropdown menu-icon">
@@ -124,11 +112,11 @@ export class Personal extends React.Component{
             </ul>
           </div>
           <div className="second-icon menu-icon">
-            <span><a href="personal-profile.html" title="Profile"><span className="hidden-xs hidden-sm">Profile</span> <i className="fa fa-user" aria-hidden="true" /></a>
+            <span><a href="personal" title="Profile"><span className="hidden-xs hidden-sm">Profile</span> <i className="fa fa-user" aria-hidden="true" /></a>
             </span>
           </div>
           <div className="second-icon menu-icon">
-            <span><a href="wall.html" title="Wall"><span className="hidden-xs hidden-sm">Wall</span> <i className="fa fa-database" aria-hidden="true" /></a>
+            <span><a href="wall" title="Wall"><span className="hidden-xs hidden-sm">Wall</span> <i className="fa fa-database" aria-hidden="true" /></a>
             </span>
           </div>
         </header>
@@ -138,8 +126,11 @@ export class Personal extends React.Component{
             <img src={user1} alt="User name" className="img-circle img-user" />
           </a>
           <h2 className="text-center hidden-xs"><a href="personal-profile.html" title="Profile">{user.name +" "+ user.last_name}</a></h2>
+          <button onClick={this.handleClick}>
+                          {this.state.isToggleOn ? 'LIKE' : 'UNLIKE'}
+                        </button>
           <p className="text-center user-description hidden-xs">
-            <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i>
+            <i>prueba</i>
           </p>
         </div>
         <div className="content-posts profile-content">
@@ -148,8 +139,8 @@ export class Personal extends React.Component{
           {/* Tab Panel */}
           <ul className="nav nav-tabs" role="tablist">
             <li className="active"><a href="#posts" role="tab" id="postsTab" data-toggle="tab" aria-controls="posts" aria-expanded="true">Last posts</a></li>
-            <li><a href="#profile" role="tab" id="profileTab" data-toggle="tab" aria-controls="profile" aria-expanded="true">Profile</a></li>
-            <li><a href="#chat" role="tab" id="chatTab" data-toggle="tab" aria-controls="chat" aria-expanded="true">Chat</a></li>
+            <li className="active"><a href="#profile" role="tab" id="profileTab" data-toggle="tab" aria-controls="profile" aria-expanded="true">Profile</a></li>
+            <li className="active"><a href="#chat" role="tab" id="chatTab" data-toggle="tab" aria-controls="chat" aria-expanded="true">Chat</a></li>
           </ul>
           {/*Start Tab Content*/}
           <div className="tab-content">
@@ -159,12 +150,12 @@ export class Personal extends React.Component{
                 <div className="card-post">
                   <div className="row">
                     <div className="col-xs-3 col-sm-2">
-                      <a href="personal-profile.html" title="Profile">
+                      <a href="personal" title="Profile">
                         <img src={user1} alt="User name" className="img-circle img-user" />
                       </a>
                     </div>
                     <div className="col-xs-9 col-sm-10 info-user">
-                      <h3><a href="personal-profile.html" title="Profile">{user.name +" "+ user.last_name}</a></h3>
+                      <h3><a href="personal" title="Profile">{user.name +" "+ user.last_name}</a></h3>
                       <p><i>2h</i></p>
                     </div>
                   </div>
@@ -172,7 +163,12 @@ export class Personal extends React.Component{
                     <div className="col-sm-8 col-sm-offset-2 data-post">
                       <p>Lorem Ipsum Dolor si amet</p>
                       <div className="reaction">
-                        &#x2764; 156 &#x1F603; 54
+                      <div className="like">
+                        <button onClick={this.handleClick}>
+                          {this.state.isToggleOn ? 'LIKE' : 'UNLIKE'}
+                        </button> 
+                      </div>     
+                        &#x2764; 150 &#x1F603; 54
                       </div>
                       <div className="comments">
                         <div className="more-comments">View more comments</div>
@@ -190,12 +186,12 @@ export class Personal extends React.Component{
                 <div className="card-post">
                   <div className="row">
                     <div className="col-xs-3 col-sm-2">
-                      <a href="personal-profile.html" title="Profile">
+                      <a href="personal" title="Profile">
                         <img src={user1} alt="My User" className="img-circle img-user" />
                       </a>
                     </div>
                     <div className="col-xs-9 col-sm-10 info-user">
-                      <h3><a href="personal-profile.html" title="Profile">{user.name +" "+ user.last_name}</a></h3>
+                      <h3><a href="personal" title="Profile">{user.name +" "+ user.last_name}</a></h3>
                       <p><i>2h</i></p>
                     </div>
                   </div>
@@ -204,6 +200,9 @@ export class Personal extends React.Component{
                       <p>Lorem Ipsum Dolor si amet</p>
                       <img src={post} alt="image post" className="img-post" />
                       <div className="reaction">
+                      <button onClick={this.handleClick}>
+                          {this.state.isToggleOn ? 'LIKE' : 'UNLIKE'}
+                        </button>
                         &#x2764; 156 &#x1F603; 54
                       </div>
                       <div className="comments">
@@ -222,12 +221,12 @@ export class Personal extends React.Component{
                 <div className="card-post">
                   <div className="row">
                     <div className="col-xs-3 col-sm-2">
-                      <a href="personal-profile.html" title="Profile">
+                      <a href="personal" title="Profile">
                         <img src={user1} alt="User name" className="img-circle img-user" />
                       </a>
                     </div>
                     <div className="col-xs-9 col-sm-10 info-user">
-                      <h3><a href="personal-profile.html" title="Profile">{user.name +" "+ user.last_name}</a></h3>
+                      <h3><a href="personal" title="Profile">{user.name +" "+ user.last_name}</a></h3>
                       <p><i>2h</i></p>
                     </div>
                   </div>
@@ -239,6 +238,9 @@ export class Personal extends React.Component{
                         Your browser does not support the video tag.
                       </video>
                       <div className="reaction">
+                      <button onClick={this.handleClick}>
+                          {this.state.isToggleOn ? 'LIKE' : 'UNLIKE'}
+                        </button>
                       &#x2764; 156 &#x1F603; 54
                       </div>
                       <div className="comments">
