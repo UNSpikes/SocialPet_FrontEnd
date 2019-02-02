@@ -80,7 +80,6 @@ export class Blog extends React.Component {
 
   render() {
     const { loading } = this.state;
-
     return (
       <div>
         { loading ? 'loading...' : this.renderBlog() }

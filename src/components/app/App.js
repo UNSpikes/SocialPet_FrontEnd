@@ -5,7 +5,7 @@ import { Registrer } from './registrer/registrer';
 import { Home } from './landing/home';
 import { User } from './user/user';
 import { Perfil } from './perfil/perfil';
-import { Personal } from './perfil/personal-profile';
+import { Personal } from './perfil/personal';
 import { Wall } from './perfil/wall';
 import { Settings } from './perfil/settings';
 import { UserProfile } from './perfil/user-profile';

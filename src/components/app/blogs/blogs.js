@@ -2,6 +2,7 @@ import React from 'react';
 import './blogs.css';
 import { GET, POST } from './../../../JS/constants/api';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export class Blogs extends React.Component {
   constructor(props) {
@@ -10,15 +11,24 @@ export class Blogs extends React.Component {
       blogs: [],
       loading: true
     };
+
+    console.log(this.state)
   }
 
   componentDidMount() {
-    GET('blogs/').then((res) => {
+    axios({
+      method: "GET",
+      url: "http://localhost:4200/blogs",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwtToken")
+      }
+    }).then((res) => {
       this.setState({
-        blogs: res.data,
-        loading: false,
+        blogs:res.data,
+        loading:false,
       });
-    }).catch((err) => console.log(err));
+    }) 
+      .catch((err) => console.log(err));
   };
 
   renderBlogs() {
@@ -61,8 +71,6 @@ export class Blogs extends React.Component {
 
   render() {
     const { loading } = this.state;
-    // const loadingWindow = <Loading/>;
-
     return (
       <div>
         {loading ? 'loading...' : this.renderBlogs()}
